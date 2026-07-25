@@ -1,0 +1,496 @@
+/* =========================
+   Reset
+   ریست اولیه برای همه عناصر:
+   margin و padding را صفر می‌کند
+   و مدل محاسبه ابعاد را روی border-box می‌گذارد
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   Page Base
+   تنظیمات کلی صفحه:
+   - پس‌زمینه گرادیانی تیره + تصویر بک‌گراند
+   - فونت اصلی
+   - رنگ متن سفید
+   - راست‌چین بودن محتوا
+   - چینش کل صفحه در مرکز
+========================= */
+body {
+background:
+    radial-gradient(circle at 10% 25%, rgba(0, 220, 255, 0.25), transparent 30%),
+    radial-gradient(circle at 90% 70%, rgba(80, 120, 255, 0.25), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(0, 255, 180, 0.12), transparent 35%),
+    linear-gradient(rgba(7, 10, 18, 0.30), rgba(7, 10, 18, 0.40)),
+    url("bg.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: "Vazirmatn", sans-serif;
+    color: #fff;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    overflow-x:hidden;
+    padding:40px 20px;}
+
+/* =========================
+   Main Wrapper
+   کانتینر اصلی محتوا:
+   - عرض کامل می‌گیرد
+   - حداکثر عرض برای موبایل و لندینگ جمع‌وجور
+   - آیتم‌ها را ستونی زیر هم می‌چیند
+   - بین بخش‌ها فاصله می‌دهد
+========================= */
+.main-wrapper{
+    width:100%;
+    max-width:520px;
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+    padding:30px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:38px;
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.08);
+}
+
+/* =========================
+   Header
+   بخش بالای صفحه:
+   - متن وسط‌چین
+   - کمی فاصله از بخش بعدی
+========================= */
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* آیکون یا لوگوی بالای صفحه با رنگ روشن و سایه */
+  .logo-shield {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.logo-shield img.logo {
+    width: 145px !important;
+    height: 145px !important;
+    max-width: 145px !important;
+    max-height: 145px !important;
+    object-fit: contain !important;
+    display: block;
+    margin: 0;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.35));
+}
+
+/* استایل عنوان اصلی داخل هدر */
+.header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================
+   Cards Grid
+   گرید کارت‌های اصلی:
+   - 3 ستون مساوی
+   - فاصله بین کارت‌ها
+========================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+/* =========================
+   Card
+   استایل کلی هر کارت:
+   - ظاهر شیشه‌ای
+   - گوشه گرد
+   - سایه
+   - محتوای وسط‌چین
+   - قابلیت هاور نرم
+========================= */
+.card {
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+    padding: 12px 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-decoration: none;
+    color: #fff;
+
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 22px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    /* Shadow */
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* افکت هاور کارت:
+   کمی بالا می‌آید و روشن‌تر می‌شود */
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+
+    background: rgba(255, 255, 255, 0.11);
+
+    border-color: rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 200, 255, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* =========================
+   Icon Area
+   ناحیه مخصوص آیکون داخل کارت:
+   - برای تراز بهتر آیکون‌ها
+   - آیکون را وسط قرار می‌دهد
+========================= */
+.icon-box {
+    min-height: 60px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* اندازه پیش‌فرض آیکون‌های کارت */
+.card-icon {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.22));
+}
+
+/* =========================
+   Large Brand Icons
+   آیکون‌های برندهایی که نیاز به اندازه بزرگ‌تر دارند
+========================= */
+.rubika-icon {
+    width: 85px;
+    height: 85px;
+}
+
+.dahua-icon,
+.tiandy-icon,
+.hikvision-icon {
+    width: 100px;
+    height: 100px;
+}
+
+/* =========================
+   Card Text
+   متن‌های داخل کارت
+========================= */
+
+/* عنوان اصلی کارت */
+.title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* زیرعنوان یا توضیح کوچک کارت */
+.subtitle {
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 4px;
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+/* جهت متن زیرعنوان داخل کارت را چپ‌به‌راست می‌کند
+   مناسب شماره، آیدی، لینک یا متن انگلیسی */
+.card .subtitle {
+    direction: ltr;
+}
+
+/* =========================
+   Glow Bar
+   نوار رنگی پایین کارت:
+   - به‌صورت مطلق در پایین کارت قرار می‌گیرد
+   - برای ایجاد تنوع رنگی و تاکید بصری
+========================= */
+.glow-bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 4px;
+    border-radius: 4px 4px 0 0;
+}
+
+/* هر کلاس پایین فقط رنگ و درخشش نوار را تعیین می‌کند */
+.glow-bar.cyan {
+    background: #00b7ff;
+    box-shadow: 0 0 8px rgba(0, 183, 255, 0.7);
+}
+
+.glow-bar.green {
+    background: #25d366;
+    box-shadow: 0 0 8px rgba(37, 211, 102, 0.7);
+}
+
+.glow-bar.red {
+    background: #ff3b6b;
+    box-shadow: 0 0 8px rgba(255, 59, 107, 0.7);
+}
+
+.glow-bar.purple {
+    background: #b26cff;
+    box-shadow: 0 0 8px rgba(178, 108, 255, 0.7);
+}
+
+.glow-bar.orange {
+    background: #ff8a2a;
+    box-shadow: 0 0 8px rgba(255, 138, 42, 0.7);
+}
+
+.glow-bar.blue {
+    background: #4b8dff;
+    box-shadow: 0 0 8px rgba(75, 141, 255, 0.7);
+}
+
+/* =========================
+   Bottom Grid
+   گرید بخش پایینی صفحه:
+   - دو ستون برای کارت‌های اطلاعاتی
+========================= */
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* =========================
+   Info Card
+   کارت‌های اطلاعاتی پایین صفحه:
+   - همان ظاهر شیشه‌ای کارت‌ها
+   - مناسب تماس، آدرس، نقشه و...
+========================= */
+.info-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: rgba(15, 23, 42, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.info-card:hover {
+    transform: translateY(-3px);
+    background: rgba(15, 23, 42, 0.30);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* تیتر داخل کارت اطلاعاتی */
+.info-card h3 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #f1f5f9;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   Contact Card
+   کارت تماس:
+   - محتوای داخلی را وسط‌چین عمودی می‌کند
+========================= */
+.contact-card {
+    justify-content: center;
+}
+
+/* =========================
+   Phone Button
+   دکمه‌های شماره تماس:
+   - ظاهر شیشه‌ای
+   - فاصله و چیدمان افقی
+   - هاور نرم برای تعامل بهتر
+========================= */
+.phone-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin-bottom: 6px;
+    padding: 8px 10px;
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* آخرین دکمه دیگر فاصله پایین نداشته باشد */
+.phone-btn:last-child {
+    margin-bottom: 0;
+}
+
+/* افکت هاور دکمه تماس */
+.phone-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   Map Card
+   کارت مربوط به نقشه یا لوکیشن:
+   - محتوا وسط قرار می‌گیرد
+   - شبیه یک لینک قابل کلیک رفتار می‌کند
+========================= */
+.map-card {
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+/* دایره دور آیکون نقشه */
+.map-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    color: #a8c0ff;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+}
+.map-icon-wrapper img.address-icon {
+    width: 62px !important;
+    height: 62px !important;
+    max-width: 62px !important;
+    max-height: 62px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+
+
+
+/* =========================
+   Mobile
+   تنظیمات مخصوص نمایشگرهای کوچک:
+   - فاصله‌ها کمتر می‌شود
+   - کارت‌ها جمع‌وجورتر می‌شوند
+   - فونت‌ها و آیکون‌ها کوچک‌تر می‌شوند
+========================= */
+@media (max-width: 380px) {
+    .grid-container {
+        gap: 10px;
+    }
+
+    .bottom-grid {
+        gap: 10px;
+    }
+
+    .card {
+        min-height: 132px;
+        padding: 10px 5px;
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .rubika-icon,
+    .dahua-icon,
+    .tiandy-icon,
+    .hikvision-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .title {
+        font-size: 13px;
+    }
+
+    .subtitle {
+        font-size: 9px;
+    }
+
+    .info-card {
+        padding: 12px;
+    }
+
+    .phone-btn {
+        font-size: 11px;
+        padding: 8px;
+    }
+    
+
+}
